@@ -18,8 +18,12 @@ Web Image Converter is a web-based tool for converting images from one format to
 ## GrayScale
 ![converted Grayscale image](samples/cgrey_tiger.png)
 
+The "gray" operation likely refers to converting an image into grayscale. Grayscale images represent each pixel with a single intensity value, typically ranging from 0 (black) to 255 (white), without considering color information. This process simplifies image processing tasks and reduces memory usage compared to color images
+
 ## Blur Image
 ![converted PNG image](samples/cblur_tiger.png)
+
+Used to reduce noise and detail in images. It works by averaging the pixel values within a neighborhood to create a smoother appearance. Gaussian blur, median blur, and mean blur are popular methods used for blurring images.
 
 ## Canny Image
 ![converted PNG image](samples/cann_tiger.png)
@@ -41,6 +45,8 @@ Canny edge detection is a pivotal method in computer vision, adept at discerning
 
 ## Dilate Image
 ![converted PNG image](samples/cdilate_tiger.png)
+
+The dilate operation, a fundamental process in morphological image processing, enhances the size and shape of objects within a binary or grayscale image. It involves expanding the boundaries of foreground pixels by replacing each pixel with the maximum pixel value within its neighborhood defined by a structuring element. Dilation is commonly used for purposes like object detection, noise reduction, and image segmentation
 
 ## Installation
 
