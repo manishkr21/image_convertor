@@ -10,8 +10,10 @@ Web Image Converter is a web-based tool for converting images from one format to
 - Provides real-time conversion preview and download options.
 
 ## Web Interface
-
 ![converted PNG image](samples/demo.png)
+
+## Original JPG Image
+![converted PNG image](samples/cjpg_tiger.jpg)
 
 ## GrayScale
 ![converted Grayscale image](samples/cgrey_tiger.png)
@@ -20,10 +22,8 @@ Web Image Converter is a web-based tool for converting images from one format to
 ![converted PNG image](samples/cblur_tiger.png)
 
 ## Canny Image
-![converted PNG image](samples/ccann_tiger.png)
+![converted PNG image](samples/cann_tiger.png)
 
-## JPG Image
-![converted PNG image](samples/cjpg_tiger.jpg)
 
 ## Dilate Image
 ![converted PNG image](samples/cdilate_tiger.png)
