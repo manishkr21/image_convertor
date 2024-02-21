@@ -24,6 +24,21 @@ Web Image Converter is a web-based tool for converting images from one format to
 ## Canny Image
 ![converted PNG image](samples/cann_tiger.png)
 
+
+Canny Edge Detection
+
+1. Smoothing: Gaussian filter is applied to reduce noise and blur the image.
+
+2. Gradient Calculation: Sobel filters compute gradient magnitude and direction, highlighting edges.
+
+3. Non-maximum Suppression: Thin edges are retained by suppressing non-maximum pixels along gradient directions.
+
+4. Double Thresholding: Pixels are classified as strong, weak, or non-edges based on predefined thresholds.
+
+5. Edge Tracking: Weak edges adjacent to strong ones are connected, ensuring continuous edge contours.
+
+Canny edge detection is a pivotal method in computer vision, adept at discerning edges amidst noise. Its systematic approach ensures robust edge detection, critical for tasks like object recognition and image analysis.
+
 ## Dilate Image
 ![converted PNG image](samples/cdilate_tiger.png)
 
