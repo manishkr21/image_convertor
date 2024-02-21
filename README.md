@@ -24,7 +24,6 @@ Web Image Converter is a web-based tool for converting images from one format to
 ## Canny Image
 ![converted PNG image](samples/cann_tiger.png)
 
-
 ## Dilate Image
 ![converted PNG image](samples/cdilate_tiger.png)
 
@@ -79,7 +78,3 @@ To set up the development environment:
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
