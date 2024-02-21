@@ -10,7 +10,7 @@ Web Image Converter is a web-based tool for converting images from one format to
 - Provides real-time conversion preview and download options.
 
 ## Web Interface
-![converted PNG image](samples/demo.png)
+![converted PNG image](samples/demo1.png)
 
 ## Original JPG Image
 ![converted PNG image](samples/cjpg_tiger.jpg)
