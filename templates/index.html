@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MyImageEditor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
+    
+    <style>
+        #drop-area {
+    padding: 100px!important;
+    font-size: 1.5em;
+}
+    </style>
+
+</head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -21,22 +29,14 @@
               <li class="nav-item">
                 <a class="nav-link" href="/about">About</a>
               </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/docs">Docs</a>
-                </li>
+    
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+        
           </div>
         </div>
     </nav>
     <div class="container">
-          <h1 class="text fs-2">Code to EDIT    </h1>
+          
 
 
           {% with messages = get_flashed_messages() %}
@@ -56,19 +56,30 @@
 
 
           <form action="/edit" method="post" enctype="multipart/form-data">
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="formFile" class="form-label">Upload an Image to EDIT</label>
                 <input class="form-control" type="file" id="formFile" name="file">
-              </div>
+              </div> -->
 
-              <div class="input-group mb-3">
+
+              <div class="card my-4">
+                <div class="card-body">
+                    <div id="drop-area" class="border rounded text-center">
+                        <p class="mb-0">Drag & Drop files here or click to upload</p>
+                        <input type="file" id="formFile" name="file" class="d-none">
+                    </div>
+                    <p id="fileNameDisplay" class="mt-2 text-center">No file selected</p>
+                </div>
+            </div>
+
+
+              <div class="input-group my-3">
                 <label class="input-group-text" for="inputGroupSelect01">Operation</label>
                 <select class="form-select" id="inputGroupSelect01" name="operation">
-                  <option selected="">Select an Editing Operation</option>
+                  <option selected="" >Select an Editing Operation</option>
                   <option value="cpng">Convert to PNG</option>
                   <option value="cjpg">Convert to JPG</option>
                   <option value="cwebp">Convert to webp</option>
-                    <option value="csvg">Convert to SVG</option>
                     <option value="cgrey">Convert to Grey Scale</option>
                     <option value="cblur">Convert to Blur Image</option>
                     <option value="ccanny">Convert to canny Image</option>
@@ -79,9 +90,72 @@
 
                 </select>
               </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+                <div class="text-center my-3">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
       </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
+  <script>
+    var dropArea = document.getElementById('drop-area');
+    var formFile = document.getElementById('formFile');
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    // Highlight drop area when dragging files over
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight(e) {
+        dropArea.classList.add('bg-primary', 'text-white');
+    }
+
+    function unhighlight(e) {
+        dropArea.classList.remove('bg-primary', 'text-white');
+    }
+
+    // Handle dropped files
+    dropArea.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        var dt = e.dataTransfer;
+        var files = dt.files;
+
+        // Set files on file input
+        formFile.files = files;
+
+        // Trigger change event on file input
+        var event = new Event('change');
+        formFile.dispatchEvent(event);
+    }
+
+    // Open file picker when drop area is clicked
+    dropArea.addEventListener('click', function() {
+        formFile.click();
+    });
+
+    // Update file name display when file input changes
+    formFile.addEventListener('change', function() {
+        var fileNameDisplay = document.getElementById('fileNameDisplay');
+        if (formFile.files.length > 0) {
+            fileNameDisplay.textContent = formFile.files[0].name;
+        } else {
+            fileNameDisplay.textContent = 'No file selected';
+        }
+    });
+</script>
 </html>

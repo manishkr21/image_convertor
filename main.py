@@ -4,7 +4,7 @@ import os
 import cv2
 import numpy as np
 UPLOAD_FOLDER = 'static'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -40,10 +40,6 @@ def process_image(filename, operation):
             return newFilename
         case 'cpng':
             newFilename = f'static/processed/cpng_{filename.split(".")[0]}.png'
-            cv2.imwrite(newFilename, img)
-            return newFilename
-        case 'csvg':
-            newFilename = f'static/processed/csvg_{filename.split(".")[0]}.svg'
             cv2.imwrite(newFilename, img)
             return newFilename
         case 'cgrey':
